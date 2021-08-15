@@ -1,8 +1,8 @@
 package com.cbtl.antlr;
 
-import com.cbtl.domain.constraint.ConstraintNode;
-import com.cbtl.domain.constraint.ExpressionNode;
-import com.cbtl.domain.constraint.FunctionNode;
+import com.cbtl.expression.ConstraintNode;
+import com.cbtl.expression.ExpressionNode;
+import com.cbtl.expression.OperationNode;
 import com.cbtl.error.MalformedInputException;
 import com.cbtl.error.SyntaxErrorListener;
 import org.antlr.v4.runtime.CharStreams;
@@ -30,8 +30,8 @@ class CustomProductConstraintVisitorTest {
         ExpressionNode result = this.classUnderTest.visit(expressionContext);
 
         // Then
-        assertTrue(result instanceof FunctionNode);
-        FunctionNode castedResult = (FunctionNode) result;
+        assertTrue(result instanceof OperationNode);
+        OperationNode castedResult = (OperationNode) result;
         assertEquals(operator, castedResult.getOperator());
         assertEquals(2, castedResult.getExpressions().size());
         assertTrue(castedResult.getExpressions().stream().allMatch(expressionNode -> expressionNode.getClass().equals(ConstraintNode.class)));
