@@ -26,6 +26,6 @@ class ProductTest {
 
         // Then
         float expectedResult = 10 * 1.23F;
-        assertEquals(new BigDecimal(expectedResult, MathContext.DECIMAL32), result);
+        assertEquals(0, new BigDecimal(expectedResult, MathContext.DECIMAL32).compareTo(result));
     }
 }
